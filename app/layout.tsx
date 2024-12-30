@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import gsap from "gsap";
 
 import "../assets/css/main.css";
 import "../assets/css/nav.css";

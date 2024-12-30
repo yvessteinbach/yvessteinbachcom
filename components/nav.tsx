@@ -76,9 +76,9 @@ export default function Nav() {
         <>
             <div className="header">
                 <div className="header_logo">
-                    <a href="/">
+                    <Link href="/">
                         <img src="https://yvessteinbach.com/assets/img/Icon-White.png" alt="Y" />
-                    </a>
+                    </Link>
                 </div>
 
                 <div className="header_nav">
@@ -96,7 +96,7 @@ export default function Nav() {
                         <div className="bar"></div>
                     </div>
                 </div>
-            </div>
+            </div >
 
             <div className="header_menu">
                 <div className="menu_links">
