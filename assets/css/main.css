@@ -1,0 +1,161 @@
+:root {
+    --backround: #0d0d0d;
+    --background-sec: #242424;
+    --background-ter: #2e2e2e;
+
+    --foreground: #f5f4f2;
+    --foreground-sec: #aaaaaa;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --backround: #0d0d0d;
+        --background-sec: #242424;
+        --background-ter: #2e2e2e;
+
+        --foreground: #f5f4f2;
+        --foreground-sec: #aaaaaa;
+    }
+}
+
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background: var(--backround);
+}
+
+#fullscreen {
+    position: fixed;
+    z-index: 5;
+    height: 100vh;
+    width: 100vw;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("https://cdn.cosmos.so/7ed84652-43bb-4064-9640-fe1e76ee0fb1?format=jpeg");
+}
+
+.container {
+    position: relative;
+    top: 80px;
+}
+
+.grid {
+    position: relative;
+    margin: 0 auto;
+    padding: 50px;
+    max-width: 1100px;
+    column-count: 3;
+    column-gap: 15px;
+}
+
+.grid__item {
+    height: 100%;
+    break-inside: avoid;
+}
+
+.grid__item:hover .grid__item__title {
+    visibility: visible;
+}
+
+.grid__item__cover img {
+    position: relative;
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    filter: brightness(1);
+}
+
+.grid__item__title {
+    position: relative;
+    left: 20px;
+    bottom: 40px;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--foreground);
+
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    width: 100vw;
+    margin-top: 50px;
+}
+
+.item__details {
+    display: flex;
+    gap: 26px;
+}
+
+.item__details img {
+    height: 100vh;
+    width: 100vw;
+    object-fit: cover;
+}
+
+.details__text {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    padding: 50px;
+}
+
+.details__text .title {
+    font-family: "Inter", sans-serif;
+    font-size: 36px;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--foreground);
+}
+
+.details__text .create {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--foreground-sec);
+}
+
+.item__gallery {
+    position: relative;
+    margin: 0 auto;
+    padding: 15px 50px 45px 50px;
+    max-width: 1100px;
+    column-count: 2;
+    column-gap: 13px;
+}
+
+.item__gallery img {
+    width: 100%;
+    padding: 5px 0;
+}
+
+@media (max-width: 800px) {
+    .grid {
+        column-count: 2;
+    }
+
+    .item__gallery {
+        column-count: 1;
+    }
+}
+
+@media (max-width: 500px) {
+    .grid {
+        column-count: 1;
+    }
+}
