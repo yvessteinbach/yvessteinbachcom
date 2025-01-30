@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { useRouter } from "next/navigation"; // For navigation
+import { useRouter } from "next/navigation";
 import { supabase } from "../utils/supabase";
 import { gsap } from "gsap";
 
@@ -14,7 +14,7 @@ interface ImageItem {
 export default function MasonicGrid() {
     const [images, setImages] = useState<ImageItem[]>([]);
     const [loading, setLoading] = useState(false);
-    const router = useRouter(); // Initialize the router
+    const router = useRouter();
 
     const fetchImages = async () => {
         try {
