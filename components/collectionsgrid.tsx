@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { supabase } from "../utils/supabase";
+import { db, collection, getDocs } from "../utils/firebase";
 import { gsap } from "gsap";
 
 interface ImageItem {
@@ -19,16 +19,12 @@ export default function MasonicGrid() {
     const fetchImages = async () => {
         try {
             setLoading(true);
-            const { data, error } = await supabase
-                .from("collections")
-                .select("id, title, cover");
+            const querySnapshot = await getDocs(collection(db, "collections"));
 
-            if (error) throw error;
-
-            const newImages: ImageItem[] = (data || []).map((item: any) => ({
-                id: item.id,
-                title: item.title,
-                cover: item.cover,
+            const newImages: ImageItem[] = querySnapshot.docs.map(doc => ({
+                id: doc.id,
+                title: doc.data().title,
+                cover: doc.data().cover
             }));
 
             setImages(newImages);
@@ -97,7 +93,7 @@ export default function MasonicGrid() {
                     <div
                         className="grid__item"
                         key={img.id}
-                        onClick={() => router.push(`/collections/${img.id}`)} // Navigate to `/collections/id`
+                        onClick={() => router.push(`/collections/${img.id}`)}
                     >
                         <div className="grid__item__cover">
                             <img src={img.cover} alt={img.title} />
