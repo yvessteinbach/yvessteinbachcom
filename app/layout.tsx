@@ -20,7 +20,6 @@ export default function RootLayout({
       <body>
         <Nav />
         {children}
-        Test
       </body>
     </html>
   );

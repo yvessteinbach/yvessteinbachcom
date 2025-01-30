@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useEffect } from "react";
 import gsap from "gsap";
+import Image from 'next/image';
 
 export default function Nav() {
 
@@ -19,16 +20,14 @@ export default function Nav() {
             return;
         }
 
-        // Initial GSAP setup
         gsap.set(headerMenu, { y: -50, opacity: 0, display: "none" });
-        gsap.set(menuLinks, { opacity: 0, y: 20 }); // Links initial state
+        gsap.set(menuLinks, { opacity: 0, y: 20 });
 
         const handleMenuToggle = () => {
             if (
                 headerMenu.style.display === "none" ||
                 headerMenu.style.display === ""
             ) {
-                // Show the menu
                 gsap.to(headerMenu, {
                     y: 0,
                     opacity: 1,
@@ -44,7 +43,6 @@ export default function Nav() {
                     },
                 });
             } else {
-                // Hide the menu
                 gsap.to(menuLinks, {
                     opacity: 0,
                     y: 20,
@@ -63,10 +61,8 @@ export default function Nav() {
             menuIcon.classList.toggle("active");
         };
 
-        // Add event listener
         menuIcon.addEventListener("click", handleMenuToggle);
 
-        // Cleanup the event listener on component unmount
         return () => {
             menuIcon.removeEventListener("click", handleMenuToggle);
         };
@@ -77,7 +73,12 @@ export default function Nav() {
             <div className="header">
                 <div className="header_logo">
                     <Link href="/">
-                        <img src="https://yvessteinbach.com/assets/img/Icon-White.png" alt="Y" />
+                        <Image
+                            src="/logo.png"
+                            width={50}
+                            height={50}
+                            alt="Y"
+                        />
                     </Link>
                 </div>
 

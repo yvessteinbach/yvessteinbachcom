@@ -25,11 +25,10 @@ export default function ItemDetailsPage() {
         try {
             setLoading(true);
 
-            // ✅ Correct Firestore single document query
             const docRef = doc(db, "collections", id);
             const docSnap = await getDoc(docRef);
 
-            if (!docSnap.exists()) { // ✅ Fix: use getDoc().exists()
+            if (!docSnap.exists()) {
                 throw new Error("Item not found");
             }
 
@@ -39,7 +38,7 @@ export default function ItemDetailsPage() {
             } as ItemDetails);
         } catch (error) {
             console.error("Error fetching item details:", error);
-            router.push("/collections"); // Redirect to collections on error
+            router.push("/collections");
         } finally {
             setLoading(false);
         }
