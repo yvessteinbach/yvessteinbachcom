@@ -89,8 +89,8 @@ export default function Nav() {
 
                 <div className="header_end">
                     <div className="header_job">
-                        <span className="job_link">Webdevelopment, </span>
-                        <span className="job_link">Videography</span>
+                        <span className="job_link">Cinematography, </span>
+                        <span className="job_link">Webdevelopment</span>
                     </div>
                     <div className="menu-icon" id="menu-icon">
                         <div className="bar"></div>
