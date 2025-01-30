@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { supabase } from "../../../utils/supabase";
+import { db, doc, getDoc } from "../../../utils/firebase";
 
 interface ItemDetails {
     id: string;
@@ -25,14 +25,18 @@ export default function ItemDetailsPage() {
         try {
             setLoading(true);
 
-            const { data, error } = await supabase
-                .from("collections")
-                .select("*")
-                .eq("id", id)
-                .single();
+            // ✅ Correct Firestore single document query
+            const docRef = doc(db, "collections", id);
+            const docSnap = await getDoc(docRef);
 
-            if (error) throw error;
-            setItem(data);
+            if (!docSnap.exists()) { // ✅ Fix: use getDoc().exists()
+                throw new Error("Item not found");
+            }
+
+            setItem({
+                id: docSnap.id,
+                ...docSnap.data(),
+            } as ItemDetails);
         } catch (error) {
             console.error("Error fetching item details:", error);
             router.push("/collections"); // Redirect to collections on error
