@@ -44,6 +44,10 @@ body {
 
 .container {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     top: 80px;
 }
 
@@ -55,6 +59,18 @@ body {
     justify-content: center;
     text-align: center;
     padding: 50px;
+}
+
+.login__container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+}
+
+.admin__container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
 }
 
 .card {
@@ -178,6 +194,22 @@ body {
 .item__gallery img {
     width: 100%;
     padding: 5px 0;
+}
+
+.login__form {
+    display: flex;
+    flex-direction: column;
+    min-width: 350px;
+}
+
+.login__form input {
+    outline: none;
+    border: none;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--foreground);
 }
 
 @media (max-width: 800px) {
