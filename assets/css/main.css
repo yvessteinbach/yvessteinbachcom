@@ -199,17 +199,39 @@ body {
 .login__form {
     display: flex;
     flex-direction: column;
-    min-width: 350px;
+    min-width: 500px;
+    gap: 16px;
 }
 
 .login__form input {
     outline: none;
     border: none;
     font-family: "Inter", sans-serif;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
     text-decoration: none;
     color: var(--foreground);
+    padding: 16px;
+    background: var(--background-sec);
+}
+
+.login__form button {
+    transition: all 200ms;
+    outline: none;
+    border: none;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--background);
+    padding: 16px;
+    border-radius: 100px;
+    background: var(--foreground);
+}
+
+.login__form button:hover {
+    cursor: pointer;
+    background: var(--foreground-sec);
 }
 
 @media (max-width: 800px) {
@@ -220,10 +242,18 @@ body {
     .item__gallery {
         column-count: 1;
     }
+
+    .login__form {
+        min-width: 400px;
+    }
 }
 
 @media (max-width: 500px) {
     .grid {
         column-count: 1;
+    }
+
+    .login__form {
+        min-width: 300px;
     }
 }
