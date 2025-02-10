@@ -203,6 +203,16 @@ body {
     gap: 16px;
 }
 
+.login__title {
+    outline: none;
+    border: none;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--foreground);
+}
+
 .login__form input {
     outline: none;
     border: none;
